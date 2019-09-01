@@ -21,7 +21,6 @@ public class A1Adept {
 		
 		String[] groceryTypesArray = new String[totalGroceryTypes];
 		double[] groceryPricesArray = new double[totalGroceryTypes];
-		String[] custNamesArray = new String[totalGroceryTypes];
 	
 		for(int t=0; t<totalGroceryTypes; t++) {
 			
@@ -36,11 +35,14 @@ public class A1Adept {
 		}
 		
 		int customerCount = scan.nextInt(); //parses line for the # of customers
+		
+		String[] custNamesArray = new String[customerCount];
 
 		double[] customerTotalArray = new double[customerCount];
 		
 		
 		for(int k=0; k<customerCount; k++) {
+			
 			
 			double itemTotal = 0;
 			double customerTotal = 0;
@@ -49,6 +51,7 @@ public class A1Adept {
 			String custLastName = scan.next(); //parses line for customer's last name and saves it
 			
 			custNamesArray[0 + k] = custFirstName + " " + custLastName; //creates an array that saves customer's names through each iteration
+		
 			
 			int custGroceryTypeTotal = scan.nextInt(); //parses line for total unique groceries purchased by each customer and saves it
 			
