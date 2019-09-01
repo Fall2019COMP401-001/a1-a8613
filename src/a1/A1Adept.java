@@ -13,39 +13,49 @@ public class A1Adept {
 		
 		//parses the line for number of grocery types and saves it
 		int totalGroceryTypes = scan.nextInt();
+		int i = 0;
+		int n = 0;
+		
+		int maxIndex = 0;
+		int minIndex = 0;
 		
 		String[] groceryTypesArray = new String[totalGroceryTypes];
 		double[] groceryPricesArray = new double[totalGroceryTypes];
 		String[] custNamesArray = new String[totalGroceryTypes];
-		
-		for(int n=0; n<totalGroceryTypes; n++) {
+	
+		for(int t=0; t<totalGroceryTypes; t++) {
 			
 			String groceryType = scan.next(); //parses line for grocery type and saves it
 			double groceryPrice = scan.nextDouble(); //parses line for grocery price and saves it
 			
 			//iterates arrays to hold the grocery types and prices of the store
-			groceryTypesArray[0 + n] = groceryType;
-			groceryPricesArray[0 + n] = groceryPrice;
+			groceryTypesArray[0 + t] = groceryType;
+			groceryPricesArray[0 + t] = groceryPrice;
+			
+			System.out.println("grocery Type: " + groceryTypesArray[0 + t]);
+			System.out.println("grocery Price " + groceryPricesArray[0 + t]);
 			
 		}
 		
 		int customerCount = scan.nextInt(); //parses line for the # of customers
+		System.out.println(customerCount);
+		double[] customerTotalArray = new double[customerCount];
 		
-		double[] customerTotalArray = new double[totalGroceryTypes];
 		
-		for(int i=0; i<customerCount; i++) {
+		for(int k=0; k<customerCount; k++) {
 			
-			double customerTotal = 0;
 			double itemTotal = 0;
+			double customerTotal = 0;
 			
 			String custFirstName = scan.next(); //parses line for customer's first name and saves it
 			String custLastName = scan.next(); //parses line for customer's last name and saves it
 			
-			custNamesArray[0 + i] = custFirstName + " " + custLastName; //creates an array that saves customer's names through each iteration
+			custNamesArray[0 + k] = custFirstName + " " + custLastName; //creates an array that saves customer's names through each iteration
+			System.out.println(custNamesArray[0 + k]);
 			
 			int custGroceryTypeTotal = scan.nextInt(); //parses line for total unique groceries purchased by each customer and saves it
 			
-			for(int n=0; n<custGroceryTypeTotal; n++) {
+			for(int f=0; f<custGroceryTypeTotal; f++) {
 			
 				int custTotalOneType = scan.nextInt(); 
 				String custItemType = scan.next();
@@ -56,66 +66,75 @@ public class A1Adept {
 			
 				itemTotal = itemPrice * custTotalOneType;
 			
+				System.out.println("item total: " + itemTotal);
+				
 				customerTotal = itemTotal + customerTotal;
 				
-				customerTotalArray[0 + i] = customerTotal; 
-			
+				System.out.println("customer total: " + customerTotal);
 				
+				System.out.println("f: " + f);
 				//All the arrays correspond to the same customer object at the same index
 			
 			}
 			
+			customerTotalArray[0 + k] = customerTotal;
+			System.out.println("customer total array: " + customerTotalArray[0 + k]);
+			
 		}
 		
-		double max = 0;
-		int n = 0;
-		 
-		while(n<customerTotalArray.length) {
+		double max = customerTotalArray[0];
+		double min = customerTotalArray[0];
 			
-			if(customerTotalArray[n]>max) {
-				max = customerTotalArray[n];
-		
-		}
-			
-			n++;	
+			for(int r=0; r<customerTotalArray.length; r++) {
+				
+				System.out.println("r: " + r);
+				
+				if(customerTotalArray[r]>max) {
+					max = customerTotalArray[r];
+					maxIndex = r;
 		
 			}
-		
-		double min = 0;
-		int i = 0;
-		
-		while(i<customerTotalArray.length) {
+
+			}
 			
-			if(customerTotalArray[i]<min) {
-				min = customerTotalArray[n];
-		
-		
-		
-	}
-		i++;
-	
-		
-	}
-		
-		double customerTotal = 0;
-		
-		for(int p=0; p<customerTotalArray.length; p++) {
 			
-			customerTotal = customerTotalArray[p] + customerTotal;
+			for(int v = 0; v<customerTotalArray.length; v++) {
+				
+				System.out.println("v: " + v);
+				
+				if(customerTotalArray[v]<min) {
+					min = customerTotalArray[v];
+					System.out.println("min: " + min);
+					minIndex = v;
+			
+		}
+			
+		}
+			
+			double allCustomerTotal = 0;
+			
+			for(int p=0; p<customerTotalArray.length; p++) {
+				
+				System.out.println("p: " + p);
+				
+				allCustomerTotal = customerTotalArray[p] + allCustomerTotal; 
+		}
+		
+			double customerAvg = allCustomerTotal/customerCount;
+			
+			String maxCustomerName = custNamesArray[maxIndex];
+			String minCustomerName = custNamesArray[minIndex];
+			
+			System.out.println("Biggest: " + maxCustomerName + " (" + String.format("%,.2f", max) + ")");
+			System.out.println("Smallest: " + minCustomerName + " (" + String.format("%,.2f", min) + ")");
+			System.out.println("Average: " + String.format("%,.2f", customerAvg));
+			
+			scan.close();
 				
 		}
 		
-		double customerAvg = customerTotal/customerCount;
-		
-		String maxCustomerName = custNamesArray[n];
-		String minCustomerName = custNamesArray[i];
-		
-		System.out.println("Biggest: " + maxCustomerName + " (" + String.format("%,.2f", max) + ")");
-		System.out.println("Smallest: " + minCustomerName + " (" + String.format("%,.2f", min) + ")");
-		System.out.println("Average: " + String.format("%,.2f", customerAvg));
-		
-		scan.close();
+	
 	}
-}
+
 	
 
