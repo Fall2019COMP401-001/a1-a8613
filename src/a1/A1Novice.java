@@ -27,7 +27,7 @@ public class A1Novice {
 			
 			String lastName = scan.next(); //parses customer's second name and saves it
 			
-			int uniqueItemCount = scan.nextInt(); //parses number of unique items the customer purchased
+			double uniqueItemCount = scan.nextInt(); //parses number of unique items the customer purchased
 			
 			int i = 0;
 			
