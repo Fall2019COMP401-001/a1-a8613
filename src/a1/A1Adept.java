@@ -11,23 +11,17 @@ public class A1Adept {
 
 		// Your code follows here.
 		
-		/*creates an instance for two arrays that will hold the price/type data
-		and help it persist past the for loop */
-		String[] groceryTypesArray;
-		double[] groceryPricesArray;
-		String [] custNamesArray;
-		
 		//parses the line for number of grocery types and saves it
 		int totalGroceryTypes = scan.nextInt();
+		
+		String[] groceryTypesArray = new String[totalGroceryTypes];
+		double[] groceryPricesArray = new double[totalGroceryTypes];
+		String[] custNamesArray = new String[totalGroceryTypes];
 		
 		for(int n=0; n<totalGroceryTypes; n++) {
 			
 			String groceryType = scan.next(); //parses line for grocery type and saves it
 			double groceryPrice = scan.nextDouble(); //parses line for grocery price and saves it
-			
-			//creates arrays to hold the grocery types and their respective prices in the store
-			groceryTypesArray = new String[totalGroceryTypes];
-			groceryPricesArray = new double[totalGroceryTypes];
 			
 			//iterates arrays to hold the grocery types and prices of the store
 			groceryTypesArray[0 + n] = groceryType;
@@ -37,8 +31,7 @@ public class A1Adept {
 		
 		int customerCount = scan.nextInt(); //parses line for the # of customers
 		
-		String[] custNamesArray; 
-		double[] customerTotalArray;
+		double[] customerTotalArray = new double[totalGroceryTypes];
 		
 		for(int i=0; i<customerCount; i++) {
 			
@@ -48,7 +41,7 @@ public class A1Adept {
 			String custFirstName = scan.next(); //parses line for customer's first name and saves it
 			String custLastName = scan.next(); //parses line for customer's last name and saves it
 			
-			custNamesArray[0 + i] = custFirstName + custLastName; //creates an array that saves customer's names through each iteration
+			custNamesArray[0 + i] = custFirstName + " " + custLastName; //creates an array that saves customer's names through each iteration
 			
 			int custGroceryTypeTotal = scan.nextInt(); //parses line for total unique groceries purchased by each customer and saves it
 			
@@ -117,7 +110,9 @@ public class A1Adept {
 		String maxCustomerName = custNamesArray[n];
 		String minCustomerName = custNamesArray[i];
 		
-		System.out.println("Biggest")
+		System.out.println("Biggest: " + maxCustomerName + " (" + String.format("%,.2f", max) + ")");
+		System.out.println("Smallest: " + minCustomerName + " (" + String.format("%,.2f", min) + ")");
+		System.out.println("Average: " + String.format("%,.2f", customerAvg));
 		
 		scan.close();
 	}
