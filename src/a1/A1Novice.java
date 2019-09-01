@@ -1,8 +1,11 @@
 package a1;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class A1Novice {
+	
+	private static DecimalFormat df2 = new DecimalFormat("#.##");
 	
 	public static void main(String[] args) {
 		
@@ -45,7 +48,7 @@ public class A1Novice {
 				
 			}
 			
-			System.out.println(firstInitial + ". " + lastName + ": " + customerTotal);
+			System.out.println(firstInitial + ". " + lastName + ": " + df2.format(customerTotal)); 
 				
 		}
 		
