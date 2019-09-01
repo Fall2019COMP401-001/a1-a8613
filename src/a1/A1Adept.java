@@ -32,13 +32,11 @@ public class A1Adept {
 			groceryTypesArray[0 + t] = groceryType;
 			groceryPricesArray[0 + t] = groceryPrice;
 			
-			System.out.println("grocery Type: " + groceryTypesArray[0 + t]);
-			System.out.println("grocery Price " + groceryPricesArray[0 + t]);
 			
 		}
 		
 		int customerCount = scan.nextInt(); //parses line for the # of customers
-		System.out.println(customerCount);
+
 		double[] customerTotalArray = new double[customerCount];
 		
 		
@@ -51,7 +49,6 @@ public class A1Adept {
 			String custLastName = scan.next(); //parses line for customer's last name and saves it
 			
 			custNamesArray[0 + k] = custFirstName + " " + custLastName; //creates an array that saves customer's names through each iteration
-			System.out.println(custNamesArray[0 + k]);
 			
 			int custGroceryTypeTotal = scan.nextInt(); //parses line for total unique groceries purchased by each customer and saves it
 			
@@ -65,20 +62,15 @@ public class A1Adept {
 				double itemPrice = groceryPricesArray[arrayIndex];
 			
 				itemTotal = itemPrice * custTotalOneType;
-			
-				System.out.println("item total: " + itemTotal);
 				
 				customerTotal = itemTotal + customerTotal;
 				
-				System.out.println("customer total: " + customerTotal);
-				
-				System.out.println("f: " + f);
 				//All the arrays correspond to the same customer object at the same index
 			
 			}
 			
 			customerTotalArray[0 + k] = customerTotal;
-			System.out.println("customer total array: " + customerTotalArray[0 + k]);
+			
 			
 		}
 		
@@ -86,8 +78,6 @@ public class A1Adept {
 		double min = customerTotalArray[0];
 			
 			for(int r=0; r<customerTotalArray.length; r++) {
-				
-				System.out.println("r: " + r);
 				
 				if(customerTotalArray[r]>max) {
 					max = customerTotalArray[r];
@@ -100,11 +90,8 @@ public class A1Adept {
 			
 			for(int v = 0; v<customerTotalArray.length; v++) {
 				
-				System.out.println("v: " + v);
-				
 				if(customerTotalArray[v]<min) {
 					min = customerTotalArray[v];
-					System.out.println("min: " + min);
 					minIndex = v;
 			
 		}
@@ -114,8 +101,6 @@ public class A1Adept {
 			double allCustomerTotal = 0;
 			
 			for(int p=0; p<customerTotalArray.length; p++) {
-				
-				System.out.println("p: " + p);
 				
 				allCustomerTotal = customerTotalArray[p] + allCustomerTotal; 
 		}
