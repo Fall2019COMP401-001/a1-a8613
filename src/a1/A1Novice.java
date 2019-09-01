@@ -48,7 +48,7 @@ public class A1Novice {
 				
 			}
 			
-			System.out.println(firstInitial + ". " + lastName + ": " + df2.format(customerTotal)); 
+			System.out.println(firstInitial + ". " + lastName + ": " + String.format("%,.2f", customerTotal)); 
 				
 		}
 		
